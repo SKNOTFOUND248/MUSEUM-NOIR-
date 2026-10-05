@@ -1,0 +1,490 @@
+/* ==========================================================================
+   MUSEUM NOIR — BESPOKE CURATORIAL DESIGN SYSTEM
+   Editorial, Architectural, High-Contrast Monolithic Art Institution
+   ========================================================================== */
+
+:root {
+  /* Color Palette — Noir Atmosphere (Default) */
+  --bg-primary: #070707;
+  --bg-surface: #0e0e0e;
+  --bg-surface-elevated: #151515;
+  --bg-subtle: #1c1c1c;
+  
+  --text-primary: #f5f4f0;
+  --text-secondary: #9c9a94;
+  --text-muted: #5e5d59;
+  --text-inverse: #080808;
+
+  --border-hairline: rgba(245, 244, 240, 0.08);
+  --border-medium: rgba(245, 244, 240, 0.16);
+  --border-strong: rgba(245, 244, 240, 0.35);
+
+  --accent-gold: #c7a363;
+  --accent-gold-muted: rgba(199, 163, 99, 0.15);
+  --accent-terra: #c34b38;
+  --accent-terra-muted: rgba(195, 75, 56, 0.15);
+
+  /* Typography Stacks */
+  --font-display: 'Italiana', 'Playfair Display', Georgia, serif;
+  --font-editorial: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-heading: 'Syne', 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Spatial Scales */
+  --container-max: 1480px;
+  --container-editorial: 960px;
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  
+  /* Transitions */
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-standard: 380ms;
+  --duration-slow: 700ms;
+}
+
+/* Light / Gallery Daylight Theme Overrides */
+html.light {
+  --bg-primary: #f6f5f1;
+  --bg-surface: #ebe8e1;
+  --bg-surface-elevated: #dfdcd3;
+  --bg-subtle: #d3cfc5;
+
+  --text-primary: #121211;
+  --text-secondary: #585652;
+  --text-muted: #8c8982;
+  --text-inverse: #f6f5f1;
+
+  --border-hairline: rgba(18, 18, 17, 0.08);
+  --border-medium: rgba(18, 18, 17, 0.16);
+  --border-strong: rgba(18, 18, 17, 0.35);
+
+  --accent-gold: #9e7a35;
+  --accent-gold-muted: rgba(158, 122, 53, 0.12);
+  --accent-terra: #9e3626;
+  --accent-terra-muted: rgba(158, 54, 38, 0.12);
+}
+
+/* Base Reset & Foundation */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.65;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--accent-gold);
+  color: #070707;
+}
+
+/* Typography Hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-editorial {
+  font-family: var(--font-editorial);
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+  font-size: 0.825rem;
+}
+
+/* Display Titles */
+.title-monumental {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 9vw, 8rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.title-editorial-lg {
+  font-family: var(--font-editorial);
+  font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+}
+
+.title-section {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.meta-label {
+  font-family: var(--font-mono);
+  font-size: 0.725rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+
+/* Links & Buttons */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--duration-standard) var(--ease-editorial), opacity var(--duration-standard) var(--ease-editorial);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+/* Curatorial Buttons */
+.btn-noir {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2.25rem;
+  background-color: var(--text-primary);
+  color: var(--text-inverse);
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 0;
+  border: 1px solid var(--text-primary);
+  transition: transform var(--duration-standard) var(--ease-editorial), background-color var(--duration-standard) var(--ease-editorial), color var(--duration-standard) var(--ease-editorial);
+}
+
+.btn-noir:hover {
+  background-color: transparent;
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2.25rem;
+  background-color: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 0;
+  border: 1px solid var(--border-medium);
+  transition: all var(--duration-standard) var(--ease-editorial);
+}
+
+.btn-outline:hover {
+  border-color: var(--text-primary);
+  background-color: var(--border-hairline);
+  transform: translateY(-2px);
+}
+
+.btn-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-medium);
+  padding-bottom: 0.25rem;
+  transition: all var(--duration-standard) var(--ease-editorial);
+}
+
+.btn-text-link:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+/* Layout Utilities */
+.museum-container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.museum-editorial-container {
+  width: 100%;
+  max-width: var(--container-editorial);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.section-spacing {
+  padding-top: clamp(5rem, 12vw, 10rem);
+  padding-bottom: clamp(5rem, 12vw, 10rem);
+}
+
+.section-spacing-sm {
+  padding-top: clamp(3rem, 6vw, 5rem);
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.hairline-divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--border-hairline);
+  border: none;
+}
+
+.hairline-divider-strong {
+  width: 100%;
+  height: 1px;
+  background-color: var(--border-medium);
+  border: none;
+}
+
+/* Grid Systems */
+.grid-editorial-asymmetric {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 900px) {
+  .grid-editorial-asymmetric {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 4rem;
+  }
+}
+
+.grid-gallery-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .grid-gallery-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-gallery-3 {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+.grid-asymmetric-mosaic {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .grid-asymmetric-mosaic {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2rem;
+  }
+  .mosaic-col-7 { grid-column: span 7; }
+  .mosaic-col-5 { grid-column: span 5; }
+  .mosaic-col-4 { grid-column: span 4; }
+  .mosaic-col-8 { grid-column: span 8; }
+  .mosaic-col-6 { grid-column: span 6; }
+  .mosaic-col-12 { grid-column: span 12; }
+}
+
+/* Artwork Card Component */
+.artwork-frame {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  transition: border-color var(--duration-standard) var(--ease-editorial);
+}
+
+.artwork-frame:hover {
+  border-color: var(--border-medium);
+}
+
+.artwork-image-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: #0c0c0c;
+}
+
+.artwork-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: contrast(1.04) brightness(0.96);
+  transition: transform var(--duration-slow) var(--ease-editorial), filter var(--duration-slow) var(--ease-editorial);
+}
+
+.artwork-frame:hover .artwork-img {
+  transform: scale(1.03);
+  filter: contrast(1.08) brightness(1.02);
+}
+
+/* Museum Plaque / Wall Label */
+.museum-plaque {
+  padding: 1.5rem;
+  background-color: var(--bg-surface);
+  border-top: 1px solid var(--border-hairline);
+}
+
+.plaque-title {
+  font-family: var(--font-editorial);
+  font-size: 1.35rem;
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.plaque-artist {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.75rem;
+}
+
+.plaque-meta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Noise Texture Overlay */
+.museum-noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  opacity: 0.025;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Curatorial Drop Cap */
+.curatorial-drop-cap::first-letter {
+  font-family: var(--font-display);
+  font-size: 4.5rem;
+  line-height: 0.8;
+  float: left;
+  margin-right: 1rem;
+  margin-top: 0.2rem;
+  color: var(--accent-gold);
+}
+
+/* Audio Waveform Bars */
+.audio-waveform-bars {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  height: 18px;
+}
+
+.audio-bar {
+  width: 2.5px;
+  height: 100%;
+  background-color: var(--accent-gold);
+  border-radius: 1px;
+  animation: audioWave 1.2s ease-in-out infinite alternate;
+}
+
+.audio-bar:nth-child(1) { animation-delay: 0.1s; height: 35%; }
+.audio-bar:nth-child(2) { animation-delay: 0.3s; height: 85%; }
+.audio-bar:nth-child(3) { animation-delay: 0.2s; height: 60%; }
+.audio-bar:nth-child(4) { animation-delay: 0.4s; height: 100%; }
+.audio-bar:nth-child(5) { animation-delay: 0.15s; height: 45%; }
+
+@keyframes audioWave {
+  0% { transform: scaleY(0.2); }
+  100% { transform: scaleY(1); }
+}
+
+/* Accessibility & Focus Rings */
+:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 4px;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
